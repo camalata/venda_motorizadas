@@ -9,4 +9,10 @@ class Mota extends Model
 {
     /** @use HasFactory<\Database\Factories\MotaFactory> */
     use HasFactory;
+
+    protected function reservas()
+    {
+        return $this->hasMany(Reserva::class);
+    }
+
 }
