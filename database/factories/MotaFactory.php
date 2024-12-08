@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Nette\Utils\Random;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Mota>
@@ -20,7 +21,7 @@ class MotaFactory extends Factory
 
         return [
             'nome' => $faker->name,
-            'preco' => $faker->randomNumber(2),
+            'preco' => $faker->randomFloat(1000, 89, 10000) * 100,
             'descricao' => $faker->text,
             'disponivel' => $faker->boolean,
             'imagem_url' => $faker->imageUrl,

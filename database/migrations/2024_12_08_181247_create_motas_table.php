@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('descricao');
             $table->boolean('disponivel');
             $table->string('imagem_url');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
