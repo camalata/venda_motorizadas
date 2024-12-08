@@ -22,5 +22,12 @@ class DatabaseSeeder extends Seeder
         Administrador::make([
             'user_id' => $user->id
         ]);
+
+        $this->call([
+            AdministradorSeeder::class,
+            ClienteSeeder::class,
+            MotaSeeder::class,
+            ReservaSeeder::class,
+        ]);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Administrador;
 use Illuminate\Database\Seeder;
 
 class AdministradorSeeder extends Seeder
@@ -12,6 +12,8 @@ class AdministradorSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        foreach (range(1, 100) as $index) {
+            Administrador::factory()->create();
+        }
     }
 }

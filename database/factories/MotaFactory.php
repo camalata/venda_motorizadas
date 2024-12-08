@@ -16,8 +16,14 @@ class MotaFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = \faker\factory::create();
+
         return [
-            //
+            'nome' => $faker->name,
+            'preco' => $faker->randomNumber(2),
+            'descricao' => $faker->text,
+            'disponivel' => $faker->boolean,
+            'imagem_url' => $faker->imageUrl,
         ];
     }
 }

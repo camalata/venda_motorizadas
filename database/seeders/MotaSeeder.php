@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Mota;
 use Illuminate\Database\Seeder;
 
 class MotaSeeder extends Seeder
@@ -12,6 +12,10 @@ class MotaSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $faker = \faker\factory::create();
+
+        foreach (range(1, 100) as $index) {
+            Mota::factory()->create();
+        }
     }
 }

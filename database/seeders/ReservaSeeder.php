@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Reserva;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,8 @@ class ReservaSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        foreach (range(1, 20) as $index) {
+            Reserva::factory()->create();
+        }
     }
 }

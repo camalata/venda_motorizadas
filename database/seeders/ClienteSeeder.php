@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Cliente;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class ClienteSeeder extends Seeder
@@ -12,6 +13,8 @@ class ClienteSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        foreach (range(1, 100) as $index) {
+            Cliente::factory()->create();
+        }
     }
 }
