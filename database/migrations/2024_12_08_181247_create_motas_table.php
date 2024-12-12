@@ -20,6 +20,7 @@ return new class extends Migration
         Schema::create('motas', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
+            $table->string('marca');
             $table->decimal('preco');
             $table->text('descricao');
             $table->boolean('disponivel');

@@ -18,9 +18,11 @@ class MotaFactory extends Factory
     public function definition(): array
     {
         $faker = \faker\factory::create();
+        $marcas = ['YAMANHA', 'CRUX', 'LINGKENY', 'BAJAJA', 'TVS', 'APOLO', 'KAWAZAKI', 'HONDA'];
 
         return [
             'nome' => $faker->name,
+            'marca' => $faker->randomElement($marcas),
             'preco' => $faker->randomFloat(1000, 89, 10000) * 100,
             'descricao' => $faker->text,
             'disponivel' => $faker->boolean,
