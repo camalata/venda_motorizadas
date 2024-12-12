@@ -12,7 +12,7 @@ class AdministradorSeeder extends Seeder
      */
     public function run(): void
     {
-        foreach (range(1, 100) as $index) {
+        foreach (range(1, 10) as $index) {
             Administrador::factory()->create();
         }
     }

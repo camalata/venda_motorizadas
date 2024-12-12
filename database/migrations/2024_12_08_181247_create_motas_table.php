@@ -21,7 +21,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->string('marca');
-            $table->decimal('preco');
+            $table->double('preco');
             $table->text('descricao');
             $table->boolean('disponivel');
             $table->string('imagem_url');

@@ -21,7 +21,7 @@ class MotaFactory extends Factory
         $marcas = ['YAMANHA', 'CRUX', 'LINGKENY', 'BAJAJA', 'TVS', 'APOLO', 'KAWAZAKI', 'HONDA'];
 
         return [
-            'nome' => $faker->name,
+            'nome' => $faker->company(),
             'marca' => $faker->randomElement($marcas),
             'preco' => $faker->randomFloat(1000, 89, 10000) * 100,
             'descricao' => $faker->text,

@@ -14,7 +14,7 @@ class MotaSeeder extends Seeder
     {
         $faker = \faker\factory::create();
 
-        foreach (range(1, 100) as $index) {
+        foreach (range(1, 10) as $index) {
             Mota::factory()->create();
         }
     }

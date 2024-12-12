@@ -29,8 +29,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'cliente@cliente.com',
         ]);
 
-        Cliente::make([
-            'user_id' => $user->id
+        $faker = \Faker\Factory::create();
+
+        Cliente::create([
+            'user_id' => $user->id,
+            'bi' => $faker->unique()->ean13(),
+            'localizacao' => $faker->address(),
         ]);
 
         $this->call([

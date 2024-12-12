@@ -6,6 +6,7 @@ use App\Filament\Resources\MotaResource\Pages;
 use App\Filament\Resources\MotaResource\RelationManagers;
 use App\Models\Mota;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -28,17 +29,18 @@ class MotaResource extends Resource
                 Forms\Components\TextInput::make('nome')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('marca')
+                    ->required()
+                    ->maxLength(255),
                 Forms\Components\TextInput::make('preco')
                     ->required()
                     ->numeric(),
                 Forms\Components\Textarea::make('descricao')
                     ->required()
                     ->columnSpanFull(),
-                Forms\Components\Toggle::make('disponivel')
+                FileUpload::make('imagem_url')
+                    ->label('Imagem')
                     ->required(),
-                Forms\Components\TextInput::make('imagem_url')
-                    ->required()
-                    ->maxLength(255),
             ]);
     }
 

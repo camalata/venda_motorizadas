@@ -13,7 +13,7 @@ class ReservaSeeder extends Seeder
      */
     public function run(): void
     {
-        foreach (range(1, 20) as $index) {
+        foreach (range(1, 9) as $index) {
             Reserva::factory()->create();
         }
     }

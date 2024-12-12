@@ -200,7 +200,7 @@
                                             <p>{{ number_format($mota->preco, 2, ',', '.') . ' Kz' }}</p>
                                         </div>
                                         <div class="col-4 text-center">
-                                            <a href="/cliente/" class="btn btn-primary">Comprar</a>
+                                            <a href="/cliente/reservas/create?motas_id={{ $mota->id }}" class="btn btn-primary">Comprar</a>
                                         </div>
                                     </div>
                                 </div>
