@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Administrador;
 use App\Models\User;
+use App\Models\Cliente;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -20,6 +21,15 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Administrador::make([
+            'user_id' => $user->id
+        ]);
+
+        $user =  User::factory()->create([
+            'name' => 'Cliente de testes',
+            'email' => 'cliente@cliente.com',
+        ]);
+
+        Cliente::make([
             'user_id' => $user->id
         ]);
 

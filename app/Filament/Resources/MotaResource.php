@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -52,8 +53,10 @@ class MotaResource extends Resource
                     ->sortable(),
                 Tables\Columns\IconColumn::make('disponivel')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('reservas.count()')
-                    ->searchable(),
+                BadgeColumn::make('reservas_count')
+                    ->label('Total de Reservas')
+                    ->counts('reservas') // Nome da relação hasMany
+                    ->color('success'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
