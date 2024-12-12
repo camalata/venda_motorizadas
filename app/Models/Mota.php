@@ -12,6 +12,7 @@ class Mota extends Model
     use HasFactory;
     use SoftDeletes;
 
+
     public function reservas()
     {
         return $this->hasMany(Reserva::class);
