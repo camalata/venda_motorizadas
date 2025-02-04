@@ -53,7 +53,7 @@
                     <li><a href="#hero" class="active">HOME</a></li>
                     <li><a href="#about">PRODUTOS</a></li>
                     <li><a href="#services">SERVIÇOS</a></li>
-                   <!-- <li><a href="#portfolio">Portfolio</a></li>  -->
+                    <!-- <li><a href="#portfolio">Portfolio</a></li>  -->
                     <li><a href="#contact">CONTACTAR-NOS</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -75,7 +75,8 @@
                     <img src="{{ asset('assets/img/hero-carousel/hero-carousel-1.jpg') }}" alt="">
                     <div class="carousel-container">
                         <h2>Bem-vindo a SERVERS-COMERCIAL<br></h2>
-                        <p>Não perca a oportunidade de ter a sua motorizada de qualidade a um preço acessivel e com as melhores garantias.</p>
+                        <p>Não perca a oportunidade de ter a sua motorizada de qualidade a um preço acessivel e com as
+                            melhores garantias.</p>
                         <a href="/cliente/login" class="btn-get-started">Entrar</a>
                     </div>
                 </div><!-- End Carousel Item -->
@@ -93,7 +94,8 @@
                     <img src="{{ asset('assets/img/hero-carousel/hero-carousel-3.jpg') }}" alt="">
                     <div class="carousel-container">
                         <h2>Preços baixos e com qualidade</h2>
-                        <p> Resolva ja uma vez por toda a questao transporte com as grandes marcas e modelos com as melhores cilindragem na SEVERS-COMERCIAL</p>
+                        <p> Resolva ja uma vez por toda a questao transporte com as grandes marcas e modelos com as
+                            melhores cilindragem na SEVERS-COMERCIAL</p>
                         <a href="/cliente/login" class="btn-get-started">Entrar</a>
                     </div>
                 </div><!-- End Carousel Item -->
@@ -182,23 +184,24 @@
                     <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
                         <?php foreach ($motas as $mota) { ?>
-                            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-{{ $mota->marca }}">
-                                <div class="portfolio-content h-100">
-                                    <a href="{{ asset('assets/img/LINKEN-50.jpg') }}"
-                                        data-gallery="portfolio-gallery-app" class="glightbox"><img
-                                            src="{{ asset('assets/img/LINKEN-50.jpg') }}" class="img-fluid"
-                                            alt=""></a>
-                                    <div class="row d-flex justify-content-center text-center">
-                                        <div class="col-8 portfolio-info">
-                                            <h4>{{ $mota->marca }}</a></h4>
-                                            <p>{{ number_format($mota->preco, 2, ',', '.') . ' Kz' }}</p>
-                                        </div>
-                                        <div class="col-4 text-center">
-                                            <a href="/cliente/reservas/create?motas_id={{ $mota->id }}" class="btn btn-primary">Comprar</a>
-                                        </div>
+                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-{{ $mota->marca }}">
+                            <div class="portfolio-content h-100">
+                                <a href="{{ asset('assets/img/LINKEN-50.jpg') }}"
+                                    data-gallery="portfolio-gallery-app" class="glightbox"><img
+                                        src="{{ asset('storage/' . $mota->imagem_url)}}" class="img-fluid"
+                                        alt=""></a>
+                                <div class="row d-flex justify-content-center text-center">
+                                    <div class="col-8 portfolio-info">
+                                        <h4>{{ $mota->marca }}</a></h4>
+                                        <p>{{ number_format($mota->preco, 2, ',', '.') . ' Kz' }}</p>
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <a href="/cliente/reservas/create?motas_id={{ $mota->id }}"
+                                            class="btn btn-primary">Comprar</a>
                                     </div>
                                 </div>
-                            </div><!-- End Portfolio Item -->
+                            </div>
+                        </div><!-- End Portfolio Item -->
                         <?php } ?>
 
                     </div>
@@ -228,9 +231,12 @@
                             <a href="#portifolio" class="stretched-link">
                                 <h3>Venda de motorizadas</h3>
                             </a>
-                            <p>  Cada cliente atendido é uma oportunidade de transformar sonhos em realidade sobre duas rodas. Venda com paixão, e o sucesso será o seu caminho!"  O sucesso vem quando o cliente sente que fez a melhor escolha!
-                                A melhor venda não é só aquela que fecha negócio, mas aquela que abre portas para novas oportunidades!
-"Cada moto vendida é um novo destino conquistado.  </p>
+                            <p> Cada cliente atendido é uma oportunidade de transformar sonhos em realidade sobre duas
+                                rodas. Venda com paixão, e o sucesso será o seu caminho!" O sucesso vem quando o cliente
+                                sente que fez a melhor escolha!
+                                A melhor venda não é só aquela que fecha negócio, mas aquela que abre portas para novas
+                                oportunidades!
+                                "Cada moto vendida é um novo destino conquistado. </p>
                         </div>
                     </div><!-- End Service Item -->
 
@@ -242,7 +248,8 @@
                             <a href="#portifolio" class="stretched-link">
                                 <h3>Montagem de motorizadas</h3>
                             </a>
-                            <p>"Cada peça montada é um passo rumo à liberdade sobre duas rodas. Precisão, paixão e qualidade fazem toda a diferença!" .</p>
+                            <p>"Cada peça montada é um passo rumo à liberdade sobre duas rodas. Precisão, paixão e
+                                qualidade fazem toda a diferença!" .</p>
                         </div>
                     </div><!-- End Service Item -->
 
@@ -255,10 +262,10 @@
                                 <h3>Publicidade de novas marcas</h3>
                             </a>
                             <p>"Sinta a liberdade sobre duas rodas! Encontre sua motorizada perfeita aqui!" 🏍️✨
-"Velocidade, estilo e economia! Escolha a moto dos seus sonhos hoje mesmo!" 🚀🔥
-"A estrada te espera! Garanta já a sua motorizada com os melhores preços!" 🛣️💨
-"Mais que uma moto, um estilo de vida! Venha conferir nossas ofertas!" 🏁⚡
-"Montamos sua motorizada com qualidade e paixão. Peça já a sua!" .</p>
+                                "Velocidade, estilo e economia! Escolha a moto dos seus sonhos hoje mesmo!" 🚀🔥
+                                "A estrada te espera! Garanta já a sua motorizada com os melhores preços!" 🛣️💨
+                                "Mais que uma moto, um estilo de vida! Venha conferir nossas ofertas!" 🏁⚡
+                                "Montamos sua motorizada com qualidade e paixão. Peça já a sua!" .</p>
                         </div>
                     </div><!-- End Service Item -->
 
@@ -309,7 +316,7 @@
                                     <i class="bi bi-envelope"></i>
                                     <h3>Nosso email</h3>
                                     <p> severscomercialvendasmotorizadas@
-                                         gmail.com</p>
+                                        gmail.com</p>
                                 </div>
                             </div><!-- End Info Item -->
 

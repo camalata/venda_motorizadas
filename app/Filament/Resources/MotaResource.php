@@ -40,6 +40,7 @@ class MotaResource extends Resource
                     ->columnSpanFull(),
                 FileUpload::make('imagem_url')
                     ->label('Imagem')
+                    ->directory('motas')
                     ->required(),
             ]);
     }

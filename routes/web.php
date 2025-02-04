@@ -5,11 +5,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
-    $motas = Mota::all()->take(9);
+    $motas = Mota::orderBy('created_at', 'desc')->get();
 
-    $motas = $motas->shuffle();
+    // $motas = $motas->shuffle();
     $marcas = $motas->pluck('marca')->toArray();
-    // remova a duplicata da marca
     $marcas = array_unique($marcas);
 
     return view(
