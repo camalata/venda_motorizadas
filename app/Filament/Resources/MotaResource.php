@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\MotaResource\Pages;
 use App\Filament\Resources\MotaResource\RelationManagers;
 use App\Models\Mota;
+use Faker\Core\Color;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
@@ -15,6 +16,7 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use SebastianBergmann\CodeCoverage\Report\Html\Colors;
 
 class MotaResource extends Resource
 {
@@ -26,13 +28,31 @@ class MotaResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nome')
-                    ->required()
-                    ->maxLength(255),
                 Forms\Components\TextInput::make('marca')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('modelo')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\Select::make('cor')
+                    ->required()
+                    ->options([
+                        'preta' => 'Preta',
+                        'branca' => 'Branca',
+                        'amarela' => 'Amarela',
+                        'vermelha' => 'Vermelha',
+                        'azul' => 'Azul',
+                        'verde' => 'Verde',
+                        'outro' => 'Outro',
+                    ]),
                 Forms\Components\TextInput::make('preco')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('cilindragem')
+                    ->required()
+                    ->label('Cilindragem CM3')
+                    ->numeric(),
+                Forms\Components\TextInput::make('capacidade')
                     ->required()
                     ->numeric(),
                 Forms\Components\Textarea::make('descricao')
@@ -50,11 +70,19 @@ class MotaResource extends Resource
         return $table
             ->defaultSort('created_at', 'desc')
             ->columns([
-                Tables\Columns\TextColumn::make('nome')
+                Tables\Columns\TextColumn::make('marca')
+                    ->label('Marca da Mota')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('modelo')
+                    ->label('Modelo da Mota')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('preco')
                     ->money('AOA')
                     ->sortable(),
+                Tables\Columns\TextColumn::make('cor')
+                    ->label('Cor da Mota')
+                    ->badge()
+                    ->searchable(),
                 Tables\Columns\IconColumn::make('disponivel')
                     ->boolean(),
                 BadgeColumn::make('reservas_count')
@@ -66,7 +94,7 @@ class MotaResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(),
-                    Tables\Columns\TextColumn::make('updated_at')
+                Tables\Columns\TextColumn::make('updated_at')
                     ->label('Atualizado em')
                     ->dateTime()
                     ->sortable()

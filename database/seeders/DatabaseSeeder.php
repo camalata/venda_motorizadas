@@ -40,8 +40,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AdministradorSeeder::class,
             ClienteSeeder::class,
-            MotaSeeder::class,
-            ReservaSeeder::class,
+            // MotaSeeder::class,
+            // ReservaSeeder::class,
         ]);
     }
 }

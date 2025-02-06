@@ -26,14 +26,14 @@ class ReservaResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\DateTimePicker::make('data_reserva')
-                    ->native(false)
-                    ->minDate(now())
-                    ->required(),
+                // Forms\Components\DateTimePicker::make('data_reserva')
+                //     ->native(false)
+                //     ->minDate(now())
+                //     ->required(),
                 Select::make('mota_id')
-                    ->native(false)
-                    ->relationship('mota', 'nome')
-                    ->label('Mota')
+                ->label('Mota')
+                    ->relationship('mota', 'marca')
+                    ->searchable()
                     ->required(),
             ]);
     }
@@ -47,24 +47,25 @@ class ReservaResource extends Resource
                 Tables\Columns\TextColumn::make('data_reserva')
                     ->dateTime()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('status'),
-                Tables\Columns\TextColumn::make('mota.nome')
-                    ->label('Nome da Mota')
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('cliente.user.name')
-                    ->label('Solicitante')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('status')
+                    ->badge()
+                    ->colors([
+                        'info' => 'pendente',
+                        'success' => 'reservada',
+                        'danger' => 'cancelada',
+                        'warning' => 'estoque insuficiente',
+                    ]),
+                // Tables\Columns\TextColumn::make('mota.nome')
+                //     ->label('Nome da Mota')
+                //     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
-                ->label('Criado em')
-                ->dateTime()
-                ->sortable()
-                ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                ->label('Atualizado em')
+                    ->label('Criado em')
                     ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->label('Atualizado em')
+                    ->dateTime()
+                    ->sortable(),
             ])
             ->filters([
                 //

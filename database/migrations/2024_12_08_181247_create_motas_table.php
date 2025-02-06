@@ -19,9 +19,12 @@ return new class extends Migration
     {
         Schema::create('motas', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
             $table->string('marca');
+            $table->string('modelo');
+            $table->enum('cor', ['preta', 'branca', 'amarela', 'vermelha', 'azul', 'verde', 'outro']);
             $table->double('preco');
+            $table->double('cilindragem');
+            $table->double('capacidade');
             $table->text('descricao');
             $table->boolean('disponivel');
             $table->string('imagem_url');

@@ -18,7 +18,7 @@ class ReservaFactory extends Factory
     {
         return [
             'data_reserva' => $this->faker->date(),
-            'status' => $this->faker->randomElement(['pendente', 'confirmada', 'cancelada']),
+            'status' => $this->faker->randomElement(['pendente', 'reservada', 'cancelada', 'estoque insuficiente']),
             'mota_id' => $this->faker->numberBetween(1, 10),
             'cliente_id' => $this->faker->numberBetween(1, 10),
         ];

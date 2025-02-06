@@ -22,14 +22,21 @@ class ReservaResource extends Resource
         return $form
             ->schema([
                 Forms\Components\DateTimePicker::make('data_reserva')
-                    ->required(),
-                Forms\Components\TextInput::make('status')
-                    ->required(),
-                Forms\Components\TextInput::make('mota_id')
+                    ->disabled(),
+                Forms\Components\Select::make('status')
                     ->required()
+                    ->native(false)
+                    ->options([
+                        'pendente' => 'Pendente',
+                        'reservada' => 'Reservada',
+                        'estoque insuficiente' => 'Estoque insuficiente',
+                        'cancelada' => 'Cancelada',
+                    ]),
+                Forms\Components\TextInput::make('mota_id')
+                    ->disabled()
                     ->numeric(),
                 Forms\Components\TextInput::make('cliente_id')
-                    ->required()
+                    ->disabled()
                     ->numeric(),
             ]);
     }
@@ -39,20 +46,31 @@ class ReservaResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('data_reserva')
-                    ->dateTime()
+                    ->date()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('status'),
-                Tables\Columns\TextColumn::make('mota_id')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('status')
+                    ->badge()
+                    ->colors([
+                        'info' => 'pendente',
+                        'success' => 'reservada',
+                        'danger' => 'cancelada',
+                        'warning' => 'estoque insuficiente',
+                    ]),
+                Tables\Columns\TextColumn::make('mota.marca')
+                    ->label('Marca da Mota')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('cliente_id')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('mota.modelo')
+                    ->label('Modelo da Mota')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('cliente.user.name')
+                    ->label('Nome do Cliente')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('Criado em')
                     ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label('Atualizado em')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
