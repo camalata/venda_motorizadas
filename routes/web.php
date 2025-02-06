@@ -1,11 +1,12 @@
 <?php
 
+use App\Models\Marca;
 use App\Models\Mota;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
-    $motas = Mota::where('marca', '!=', '')->get();
+    $motas = Marca::all();
 
     // $motas = $motas->shuffle();
     $marcas = $motas->pluck('marca')->toArray();

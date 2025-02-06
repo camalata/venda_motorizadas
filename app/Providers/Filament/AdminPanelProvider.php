@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Resources\MarcaResource;
+use App\Filament\Resources\ModeloResource;
 use App\Filament\Resources\MotaResource;
 use App\Filament\Resources\ReservaResource;
 use App\Models\Marca;
@@ -45,6 +46,7 @@ class AdminPanelProvider extends PanelProvider
                         ...MotaResource::getNavigationItems(),
                         ...ReservaResource::getNavigationItems(),
                         ...MarcaResource::getNavigationItems(),
+                        ...ModeloResource::getNavigationItems(),
 
                     ]);
             })

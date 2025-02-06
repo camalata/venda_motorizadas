@@ -17,4 +17,9 @@ class Mota extends Model
     {
         return $this->hasMany(Reserva::class);
     }
+
+    public function modelo()
+    {
+        return $this->belongsTo(Modelo::class);
+    }
 }

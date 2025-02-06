@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\MotaResource\Pages;
 use App\Filament\Resources\MotaResource\RelationManagers;
+use App\Models\Modelo;
 use App\Models\Mota;
 use Faker\Core\Color;
 use Filament\Forms;
@@ -28,12 +29,11 @@ class MotaResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('marca')
+                Forms\Components\Select::make('modelo_id')
+                    ->label('Modelo')
+                    ->searchable()
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('modelo')
-                    ->required()
-                    ->maxLength(255),
+                    ->options(Modelo::all()->pluck('nome', 'id')),
                 Forms\Components\Select::make('cor')
                     ->required()
                     ->options([
@@ -70,10 +70,10 @@ class MotaResource extends Resource
         return $table
             ->defaultSort('created_at', 'desc')
             ->columns([
-                Tables\Columns\TextColumn::make('marca')
+                Tables\Columns\TextColumn::make('modelo.marca.nome')
                     ->label('Marca da Mota')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('modelo')
+                Tables\Columns\TextColumn::make('modelo.nome')
                     ->label('Modelo da Mota')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('preco')
