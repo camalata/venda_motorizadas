@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Administrador;
 use App\Models\User;
 use App\Models\Cliente;
+use App\Models\Marca;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -40,7 +41,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AdministradorSeeder::class,
             ClienteSeeder::class,
-            // MotaSeeder::class,
+            MarcaSeeder::class,
+            ModeloSeeder::class,
+            MotaSeeder::class,
             // ReservaSeeder::class,
         ]);
     }

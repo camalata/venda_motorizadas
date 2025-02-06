@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Modelo;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Nette\Utils\Random;
 
@@ -18,11 +19,9 @@ class MotaFactory extends Factory
     public function definition(): array
     {
         $faker = \faker\factory::create();
-        $marcas = ['YAMANHA', 'CRUX', 'LINGKENY', 'BAJAJA', 'TVS', 'APOLO', 'KAWAZAKI', 'HONDA'];
+        $modelos = Modelo::all()->pluck('id')->toArray();
 
         return [
-            'marca' => $faker->randomElement($marcas),
-            'modelo' => $faker->company(),
             'preco' => $faker->randomFloat(1000, 89, 10000) * 100,
             'cor' => $faker->randomElement(['preta', 'branca', 'amarela', 'vermelha', 'azul', 'verde', 'outro']),
             'descricao' => $faker->text,
@@ -30,6 +29,7 @@ class MotaFactory extends Factory
             'capacidade' => $faker->randomFloat(1000, 89, 10000) * 100,
             'disponivel' => $faker->boolean,
             'imagem_url' => $faker->imageUrl,
+            'modelo_id' => $faker->randomElement($modelos),
         ];
     }
 }
