@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Modelo;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Storage;
 use Nette\Utils\Random;
 
 /**
@@ -20,6 +21,11 @@ class MotaFactory extends Factory
     {
         $faker = \faker\factory::create();
         $modelos = Modelo::all()->pluck('id')->toArray();
+        $motasImgs = Storage::allFiles('/public/motas');
+        $saida = [];
+        foreach ($motasImgs as $img) {
+            $saida[] = substr($img, 6);
+        }
 
         return [
             'preco' => $faker->randomFloat(1000, 89, 10000) * 100,
@@ -28,7 +34,7 @@ class MotaFactory extends Factory
             'cilindragem' => $faker->randomFloat(1000, 89, 10000) * 100,
             'capacidade' => $faker->randomFloat(1000, 89, 10000) * 100,
             'disponivel' => $faker->boolean,
-            'imagem_url' => $faker->imageUrl,
+            'imagem_url' => $faker->randomElement($saida),
             'modelo_id' => $faker->randomElement($modelos),
         ];
     }
