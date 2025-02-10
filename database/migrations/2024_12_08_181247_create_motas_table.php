@@ -27,6 +27,7 @@ return new class extends Migration
             $table->boolean('disponivel');
             $table->string('imagem_url');
             $table->foreignId('modelo_id')->constrained();
+            $table->integer('quantidade_stock')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

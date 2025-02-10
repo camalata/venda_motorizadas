@@ -16,4 +16,5 @@ class ListMotas extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
+
 }

@@ -23,10 +23,11 @@
     <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Main CSS File -->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('resources/css/app.css') }}" rel="stylesheet">
 
     <!-- =======================================================
   * Template Name: Multi
@@ -184,8 +185,8 @@
                     <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
                         <?php foreach ($motas as $mota) { ?>
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-{{ $mota->marca }}">
-                            <div class="portfolio-content h-100">
+                        <div class="col-lg-3 col-md-6 portfolio-item isotope-item filter-{{ $mota->marca->nome }}">
+                            {{-- <div class="portfolio-content h-100">
                                 <a href="{{ asset('assets/img/LINKEN-50.jpg') }}"
                                     data-gallery="portfolio-gallery-app" class="glightbox"><img
                                         src="{{ asset('storage/' . $mota->imagem_url)}}" class="img-fluid"
@@ -200,7 +201,41 @@
                                             class="btn btn-primary">Comprar</a>
                                     </div>
                                 </div>
+                            </div> --}}
+
+
+                            <!-- From Uiverse.io by MuhammadHasann -->
+                            <div class="cards" style="background-color: #f7f7f7">
+                                <a href="{{ asset('storage/' . $mota->imagem_url) }}"
+                                    data-gallery="portfolio-gallery-app" class="glightbox"><img
+                                        src="{{ asset('storage/' . $mota->imagem_url) }}" class="img-fluid"
+                                        alt="" style="width: 100%; height: 250px; object-fit: cover;"></a>
+                                <div class="title">
+                                    <span>{{ $mota->modelo->nome }}</span>
+                                </div>
+                                <div class="size">
+                                    <span>{{ $mota->marca->nome }}</span>
+                                    <span class="mb-3"></span>
+                                </div>
+                                <div class="price">
+                                    <span>Kz {{ number_format($mota->preco, 2, ',', '.') }}</span>
+                                </div>
+                                <div class="action">
+                                    <a class="cart-button"
+                                        href="/cliente/reservas/create?motas_id={{ $mota->id }}">
+                                        <svg class="cart-icon" stroke="currentColor" stroke-width="1.5"
+                                            viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                                                stroke-linejoin="round" stroke-linecap="round"></path>
+                                        </svg>
+                                        <span>Reservar</span>
+                                    </a>
+                                </div>
                             </div>
+
+
+
                         </div><!-- End Portfolio Item -->
                         <?php } ?>
 

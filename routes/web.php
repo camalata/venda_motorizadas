@@ -6,11 +6,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
-    $motas = Marca::all();
+    $motas = Mota::all();
 
     // $motas = $motas->shuffle();
-    $marcas = $motas->pluck('marca')->toArray();
+    $marcas = Marca::all()->pluck('nome')->toArray();
     $marcas = array_unique($marcas);
+
+    $motas = $motas->shuffle();
 
     return view(
         'index',

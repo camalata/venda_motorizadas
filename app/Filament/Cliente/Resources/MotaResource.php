@@ -42,9 +42,6 @@ class MotaResource extends Resource
                     ->required(),
                 Forms\Components\FileUpload::make('imagem_url')
                     ->required(),
-                Forms\Components\TextInput::make('modelo_id')
-                    ->required()
-                    ->numeric(),
             ]);
     }
 
@@ -52,6 +49,11 @@ class MotaResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('imagem_url')
+                    ->label('Imagem'),
+                Tables\Columns\TextColumn::make('id'),
+                Tables\Columns\TextColumn::make('marca.nome'),
+                Tables\Columns\TextColumn::make('modelo.nome'),
                 Tables\Columns\TextColumn::make('cor'),
                 Tables\Columns\TextColumn::make('preco')
                     ->numeric()
@@ -62,12 +64,11 @@ class MotaResource extends Resource
                 Tables\Columns\TextColumn::make('capacidade')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\IconColumn::make('disponivel')
-                    ->boolean(),
-                Tables\Columns\ImageColumn::make('imagem_url'),
-                Tables\Columns\TextColumn::make('modelo_id')
+                Tables\Columns\TextColumn::make('stock')
+                    ->label('Quantidade em Stock')
+                    ->alignCenter()
                     ->numeric()
-                    ->sortable(),
+                    ->default(fn($record): int => $record->quantidade_stock),
                 Tables\Columns\TextColumn::make('deleted_at')
                     ->dateTime()
                     ->sortable()

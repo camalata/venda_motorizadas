@@ -9,11 +9,13 @@ use App\Models\Mota;
 use Faker\Core\Color;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -55,6 +57,11 @@ class MotaResource extends Resource
                 Forms\Components\TextInput::make('capacidade')
                     ->required()
                     ->numeric(),
+                TextInput::make('quantidade_stock')
+                    ->label('Quantidade em Stock')
+                    ->numeric()
+                    ->default(0)
+                    ->required(),
                 Forms\Components\Textarea::make('descricao')
                     ->required()
                     ->columnSpanFull(),
@@ -83,6 +90,9 @@ class MotaResource extends Resource
                     ->label('Cor da Mota')
                     ->badge()
                     ->searchable(),
+                TextColumn::make('quantidade_stock') // Adicionado campo quantidade_stock
+                    ->label('Stock')
+                    ->sortable(),
                 Tables\Columns\IconColumn::make('disponivel')
                     ->boolean(),
                 BadgeColumn::make('reservas_count')

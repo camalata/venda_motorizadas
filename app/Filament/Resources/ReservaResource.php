@@ -9,6 +9,8 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class ReservaResource extends Resource
@@ -45,8 +47,9 @@ class ReservaResource extends Resource
     {
         return $table
             ->columns([
+                ImageColumn::make('mota.imagem_url'),
                 Tables\Columns\TextColumn::make('data_reserva')
-                    ->date()
+                    ->dateTime()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('status')
                     ->badge()
@@ -56,21 +59,16 @@ class ReservaResource extends Resource
                         'danger' => 'cancelada',
                         'warning' => 'estoque insuficiente',
                     ]),
-                Tables\Columns\TextColumn::make('mota.marca')
-                    ->label('Marca da Mota')
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('mota.modelo')
-                    ->label('Modelo da Mota')
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('cliente.user.name')
-                    ->label('Nome do Cliente')
-                    ->sortable(),
+                TextColumn::make('mota.modelo.marca.nome'),
+                TextColumn::make('mota.modelo.nome'),
+                TextColumn::make('mota.preco')
+                    ->numeric()
+                    ->money('AOA'),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->label('Criado em')
                     ->dateTime()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('updated_at')
-                    ->label('Atualizado em')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
