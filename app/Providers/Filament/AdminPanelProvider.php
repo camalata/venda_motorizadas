@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Login\CustomLoginPage;
 use App\Filament\Resources\MarcaResource;
 use App\Filament\Resources\ModeloResource;
 use App\Filament\Resources\MotaResource;
@@ -33,7 +34,7 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->login()
+            ->login(CustomLoginPage::class)
             ->colors([
                 'primary' => Color::Amber,
             ])
