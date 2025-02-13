@@ -39,11 +39,11 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
-            AdministradorSeeder::class,
-            ClienteSeeder::class,
+            // AdministradorSeeder::class,
+            // ClienteSeeder::class,
             MarcaSeeder::class,
-            ModeloSeeder::class,
-            MotaSeeder::class,
+            // ModeloSeeder::class,
+            // MotaSeeder::class,
             // ReservaSeeder::class,
         ]);
     }
