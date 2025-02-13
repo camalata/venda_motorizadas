@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Auth;
 
 class CreateReserva extends CreateRecord
 {
+
+    public function __construct() {
+        session()->forget('mota_id');
+    }
+
     protected static string $resource = ReservaResource::class;
 
     protected function mutateFormDataBeforeFill(array $data): array
