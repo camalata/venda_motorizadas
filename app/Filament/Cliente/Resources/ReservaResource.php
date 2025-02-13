@@ -95,14 +95,15 @@ class ReservaResource extends Resource
                         ->options(Marca::all()->pluck('nome', 'id'))
                         ->searchable()
                         ->live()
-                        ->default($mota->modelo->marca_id)
+                        ->default($mota->marca->id)
                         ->disabled(true)
                         ->required(),
                     Select::make('modelo_id')
                         ->label('Modelo')
                         ->disabled(true)
+                        ->options(Modelo::all()->pluck('nome', 'id'))
                         ->searchable()
-                        ->default($mota->modelo_id)
+                        ->default($mota->modelo->id)
                         ->required(),
                     TextInput::make('preco')
                         ->default('Kz ' . number_format($mota->preco, 2))
