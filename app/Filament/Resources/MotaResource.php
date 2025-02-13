@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\MotaResource\Pages;
 use App\Filament\Resources\MotaResource\RelationManagers;
+use App\Models\Marca;
 use App\Models\Modelo;
 use App\Models\Mota;
 use Faker\Core\Color;
@@ -11,6 +12,7 @@ use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\BadgeColumn;
@@ -31,11 +33,20 @@ class MotaResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\Select::make('modelo.marca_id')
+                    ->required()
+                    ->label('Marca')
+                    ->searchable()
+                    ->live()
+                    ->options(Marca::all()->pluck('nome', 'id')),
                 Forms\Components\Select::make('modelo_id')
                     ->label('Modelo')
                     ->searchable()
                     ->required()
-                    ->options(Modelo::all()->pluck('nome', 'id')),
+                    ->disabled(fn(Get $get) => $get('marca_id') === null)
+                    ->options(function (Get $get) {
+                        return Modelo::where('marca_id', $get('marca_id'))->pluck('nome', 'id');
+                    }),
                 Forms\Components\Select::make('cor')
                     ->required()
                     ->options([

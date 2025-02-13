@@ -13,6 +13,7 @@ class CreateMota extends CreateRecord
     protected function mutateFormDataBeforeCreate(array $data): array
     {
         $data['disponivel'] = true;
+        unset($data['marca_id']);
 
         return $data;
     }
