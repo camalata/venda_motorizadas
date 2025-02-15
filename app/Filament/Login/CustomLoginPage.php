@@ -4,12 +4,15 @@ namespace App\Filament\Login;
 
 use App\Models\User;
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
+use Faker\Core\Color;
+use Filament\Actions\Action;
 use Filament\Facades\Filament;
 use Filament\Http\Responses\Auth\Contracts\LoginResponse;
 use Filament\Notifications\Notification;
 use Filament\Pages\Auth\Login;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use SebastianBergmann\CodeCoverage\Report\Html\Colors;
 
 class CustomLoginPage extends Login
 {
@@ -78,5 +81,32 @@ class CustomLoginPage extends Login
         }
 
         return strtolower($user->role) === strtolower($role);
+    }
+
+    protected function getFormActions(): array
+    {
+
+        $isAdmin = str_contains(Filament::getUrl(), 'admin');
+        if ($isAdmin) {
+            return [
+                Action::make('authenticate')
+                    ->label('Login como cliente')
+                    ->url('/cliente/login')
+                    ->color('info'),
+                Action::make('authenticate')
+                    ->label(__('filament-panels::pages/auth/login.form.actions.authenticate.label'))
+                    ->submit('authenticate'),
+            ];
+        } else {
+            return [
+                Action::make('authenticate')
+                    ->label('Login como administrador')
+                    ->url('/admin/login')
+                    ->color('warning'),
+                Action::make('authenticate')
+                    ->label(__('filament-panels::pages/auth/login.form.actions.authenticate.label'))
+                    ->submit('authenticate'),
+            ];
+        }
     }
 }
