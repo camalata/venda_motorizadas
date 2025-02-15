@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Login\CustomLoginPage;
+use App\Filament\Widgets\VoltarParaTelaInicial;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -39,7 +40,7 @@ class ClientePanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Cliente/Widgets'), for: 'App\\Filament\\Cliente\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
+                VoltarParaTelaInicial::class,
             ])
             ->middleware([
                 EncryptCookies::class,
