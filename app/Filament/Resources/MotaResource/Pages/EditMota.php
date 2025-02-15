@@ -19,4 +19,11 @@ class EditMota extends EditRecord
             Actions\RestoreAction::make(),
         ];
     }
+
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
+        unset($data['marca_id']);
+
+        return $data;
+    }
 }

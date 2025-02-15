@@ -33,7 +33,7 @@ class MotaResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('modelo.marca_id')
+                Forms\Components\Select::make('marca_id')
                     ->required()
                     ->label('Marca')
                     ->searchable()
