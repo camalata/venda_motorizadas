@@ -2,9 +2,8 @@
 
 namespace App\Filament\Widgets;
 
-use Filament\Forms\Components\DatePicker;
-use Filament\Pages\Dashboard\Actions\FilterAction;
 use Filament\Widgets\Widget;
+use Illuminate\Support\Facades\Auth;
 
 class VoltarParaTelaInicial extends Widget
 {
@@ -12,6 +11,7 @@ class VoltarParaTelaInicial extends Widget
 
     public function openNewUserModal()
     {
+        Auth::logout();
         redirect('/');
     }
 }

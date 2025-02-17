@@ -142,7 +142,7 @@ class ReservaResource extends Resource
                     Hidden::make('mota.id'),
                     Select::make('mota_id')
                         ->label('Mota')
-                        ->options(Marca::all()->pluck('nome', 'id'))
+                        ->options(Mota::all()->pluck('modelo.nome', 'id'))
                         ->searchable()
                         ->live()
                         ->disabled(fn($get) => $get('mota.id'))
